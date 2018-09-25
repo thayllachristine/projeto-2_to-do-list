@@ -10,10 +10,19 @@ const addButton = document.querySelector(".btn__add")
 addButton.addEventListener("click", function(event){
     event.preventDefault();
 
+//validação do input
+
+if (inputText.value === undefined || inputText.value === null || inputText.value === `` || inputText === ` `) {
+    alert ("Escreva uma tarefa")
+    inputText.focus();
+    return false  
+}   
+
     const div = document.createElement("div")
+    div.className = "div__task"
     
     const newTask = document.createElement("div")
-    newTask.innerHTML = `<div class="tasklist__1">
+    newTask.innerHTML = `<div class="tasklist__div">
     <p> ${inputText.value} </p>
     <button class="btn btn__delete">x</button></div>`
 
@@ -23,6 +32,7 @@ addButton.addEventListener("click", function(event){
     inputText.value = "";
 
 //constante do botão "deletar"
+
 
 
 })
