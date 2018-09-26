@@ -12,11 +12,12 @@ addButton.addEventListener("click", function(event){
 
 //validação do input
 
-if (inputText.value === undefined || inputText.value === null || inputText.value === `` || inputText.value === ` `) {
-    alert ("Escreva uma tarefa")
+if (inputText.value === undefined || inputText.value === null || inputText.value === `` || inputText.value === ` ` | !inputText.value.trim()) {
+    console.log(inputText.value, "inputText.value")
+    alert ("Escreva uma tarefa :) ")
     inputText.focus();
     return false  
-}   
+} 
 
     const div = document.createElement("div")
     div.className = "div__task"
@@ -80,9 +81,16 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
         
     } else {
         return false
-    }
-        
- 
-  }) 
+      }
+      const deleteAllButton = document.querySelector(".btn__deleteall")
+   
+        //evento de 'clique' para deletar todas as divs 
+        deleteAllButton.addEventListener("click", function(event){
+        event.preventDefault();
+        div.remove();
+          
+       })
+     
+   }) 
 
 })
