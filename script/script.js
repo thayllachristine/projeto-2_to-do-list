@@ -23,7 +23,7 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
     
     const newTask = document.createElement("div")
     newTask.innerHTML = `<div class="tasklist__div">
-    <p class="tasklist__p-none"> ${inputText.value} </p>
+    <p class="tasklist__p-none tasklist__p-all"> ${inputText.value} </p>
     <button class="btn btn__delete"><strong>x</strong></button></div>`
 
     div.appendChild(newTask)
@@ -63,12 +63,26 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
             paragTask.style.color = `black`
         }
     }
-  
+
+ //botão selecionar todas as tarefas 
+    const selectButton = document.querySelector(".btn__selectall")
     
+      selectButton.addEventListener("click", function(event){
+      event.preventDefault();
+
+      if (paragTask.classList.contains(`tasklist__p-none`)) {
+        paragTask.classList.remove(`tasklist__p-none`)
+        paragTask.classList.add(`tasklist__p-checked`)
+
+        paragTask.style.fontStyle = `italic`
+        paragTask.style.textDecoration = `line-through`
+        paragTask.style.color = `lightgray`
+        
+    } else {
+        return false
+    }
+        
+ 
+  }) 
 
 })
-
-
-
-
-
