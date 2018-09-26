@@ -22,7 +22,7 @@ main {
 
 .container {
     width: 300px;
-    height: 150px;
+    /* height: 150px; */
 }
 
 .list {
@@ -68,15 +68,15 @@ main {
     letter-spacing: 1px;    
 }
 
-.btn__selectall {
-  background-color:#e0c3fc;
-  color: #fff;
-  border:#8ec5fc;
-  padding: 10px 108px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-family: 'Open Sans';
-  letter-spacing: 2px;
+.btn-all {
+    background-color: #e0c3fc;
+    color: #fff;
+    border: #8ec5fc;
+    padding: 7.5px 27.75px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Open Sans';
+    letter-spacing: 1.95px;
 
 }
 
@@ -85,7 +85,7 @@ main {
     background-color: #fff;
     text-align: left;
     width: 300px;
-    height: 125px;
+    /* height: 125px; */
 }
 
 .tasklist__div {
@@ -115,4 +115,14 @@ main {
     display: flex; 
     justify-content: flex-end; 
     cursor: pointer;
+}
+
+
+.list__btn2 {
+    background-color: #fff;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid; */
+    border-top: 1px solid #fff; 
 }
