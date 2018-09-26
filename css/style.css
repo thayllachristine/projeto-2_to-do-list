@@ -40,17 +40,17 @@ main {
 
 .title__task {
    font-weight: bolder;
-
 }
+
 
 
 .input__text {
     width:  300px;
     height: 75px;
-    padding: 20px;
+    padding: 10px;
     border-style: none;
-    word-break: break-all;
-
+    /* word-break: break-all; */
+    overflow-wrap: break-word;
 }
 
 /* BUTTONS */
@@ -91,14 +91,14 @@ main {
 .tasklist__div {
     background-color: #fff;
     width: 300px;
-    height: 50px;
+    /* height: 50px; */
     border: 1px solid lightgray;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
     word-break: break-all;
-    
+    padding: 10px;
 }
 
 
@@ -126,4 +126,15 @@ main {
     justify-content: space-between;
     /* border: 1px solid; */
     border-top: 1px solid #fff; 
+}
+
+
+.tasklist__p-all {
+    font-size: 13px;
+}
+
+.input__text::placeholder {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+
 }
