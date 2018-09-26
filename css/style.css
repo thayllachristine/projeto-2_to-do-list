@@ -47,7 +47,7 @@ main {
 .input__text {
     width:  300px;
     height: 75px;
-    padding: 10px;
+    padding: 50px;
     border-style: none;
     /* word-break: break-all; */
     overflow-wrap: break-word;
