@@ -30,13 +30,19 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
     tasklist.insertBefore(div, tasklist.childNodes[0]);
 
     inputText.value = "";
-
-//constante do botão "deletar"
-
-
+    
+    //constante do botão DELETAR
+    
+    const deleteButton = document.querySelector(".btn__delete")
+    
+    //evento de 'clique' 
+    deleteButton.addEventListener("click", function(event){
+        event.preventDefault();
+        div.remove();
+    
+    })
 
 })
-
 
 
 

@@ -40,15 +40,20 @@ main {
 
 .title__task {
    font-weight: bolder;
+
 }
 
 
 .input__text {
-    width:  250px;
+    width:  300px;
     height: 75px;
+    padding: 20px;
     border-style: none;
 
+
 }
+
+/* BUTTONS */
 
 .btn__add {
     background-color: #ba7af8;
@@ -62,6 +67,19 @@ main {
     font-family: 'Open Sans';
     letter-spacing: 1px;    
 }
+
+.btn__selectall {
+  background-color:#e0c3fc;
+  color: #fff;
+  border:#8ec5fc;
+  padding: 10px 108px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Open Sans';
+  letter-spacing: 2px;
+
+}
+
 
 .tasklist {
     background-color: #fff;
