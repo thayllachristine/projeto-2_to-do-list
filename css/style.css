@@ -105,6 +105,7 @@ main {
     border: none;
     background-color: #fff;
     height: 20px;
+    cursor: pointer;
     /* position: relative;
     left: 280px;
     bottom: 40px; */
@@ -113,4 +114,5 @@ main {
 .div__task {
     display: flex; 
     justify-content: flex-end; 
+    cursor: pointer;
 }

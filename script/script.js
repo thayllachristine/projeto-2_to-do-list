@@ -24,7 +24,7 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
     const newTask = document.createElement("div")
     newTask.innerHTML = `<div class="tasklist__div">
     <p class="tasklist__p-none"> ${inputText.value} </p>
-    <button class="btn btn__delete">x</button></div>`
+    <button class="btn btn__delete"><strong>x</strong></button></div>`
 
     div.appendChild(newTask)
     tasklist.insertBefore(div, tasklist.childNodes[0]);
