@@ -23,7 +23,7 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
     div.className = "div__task"
     
     const newTask = document.createElement("div")
-    newTask.innerHTML = `<div class="tasklist__div">
+    newTask.innerHTML = `<div class="tasklist__div" draggable="true">
     <p class="tasklist__p-none tasklist__p-all"> ${inputText.value} </p>
     <button class="btn btn__delete"><strong>x</strong></button></div>`
 
@@ -92,5 +92,43 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
        })
      
    }) 
+
+   
+
+   //start : drag 
+   let dragging
+
+   function dragstart (dragstartevent) {
+       dragging = dragstartevent.target
+   }
+
+   function allowdrop (allowdropevent) {
+       allowdropevent.preventDefault()
+   }
+
+   function dragenter(dragenterevent) {
+        const draggedOver = dragenterevent.target;
+        
+        if (this.nextElementSibling === null) {
+            console.log(tasklist)
+            document.querySelector(`.div__task`).appendChild(dragging);
+        } else {
+            document.querySelector(`.div__task`).insertBefore(dragging, this);
+        }
+    }
+
+    function ondrop() {
+        // console.log('ondrop')
+        dragging = null;
+    }
+
+    document.querySelector(`.div__task`).addEventListener(`dragover`, allowdrop)
+    document.querySelector(`.div__task`).addEventListener(`ondrop`, ondrop)
+   
+
+
+   document.querySelector(`.tasklist__div`).addEventListener(`dragstart`, dragstart)
+   document.querySelector(`.tasklist__div`).addEventListener(`dragenter`, dragenter)
+
 
 })
