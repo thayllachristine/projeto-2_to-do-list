@@ -19,16 +19,19 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
     return false  
 } 
 
-    const div = document.createElement("div")
-    div.className = "div__task"
+    const divtask = document.createElement("div")
+    divtask.className = "div__task"
     
     const newTask = document.createElement("div")
-    newTask.innerHTML = `<div class="tasklist__div" draggable="true">
+    newTask.className = "tasklist__div"
+    
+    // newTask.innerHTML = `<div class="tasklist__div" draggable="true">
+    newTask.innerHTML =   `  
     <p class="tasklist__p-none tasklist__p-all"> ${inputText.value} </p>
     <button class="btn btn__delete"><strong>x</strong></button></div>`
 
-    div.appendChild(newTask)
-    tasklist.insertBefore(div, tasklist.childNodes[0]);
+    divtask.appendChild(newTask)
+    tasklist.insertBefore(newTask, tasklist.childNodes[0]);
 
     inputText.value = "";
     
@@ -39,7 +42,7 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
     //evento de 'clique' 
     deleteButton.addEventListener("click", function(event){
         event.preventDefault();
-        div.remove();
+        newTask.remove();
     })
 
 
@@ -87,16 +90,27 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
         //evento de 'clique' para deletar todas as divs 
         deleteAllButton.addEventListener("click", function(event){
         event.preventDefault();
-        div.remove();
+        newTask.remove();
           
        })
      
    }) 
 
    
+   document.querySelector(`.tasklist__div`).setAttribute(`draggable`, true)
+
+   document.querySelector(`.tasklist`).addEventListener(`allowdrop`, allowdrop)
+    document.querySelector(`.tasklist`).addEventListener(`ondrop`, ondrop)
+
+    document.querySelector(`.tasklist__div`).addEventListener(`dragstart`, dragstart)
+    document.querySelector(`.tasklist__div`).addEventListener(`dragenter`, dragenter)
+})
+
+
+
 
    //start : drag 
-   let dragging
+let dragging
 
    function dragstart (dragstartevent) {
        dragging = dragstartevent.target
@@ -108,27 +122,20 @@ if (inputText.value === undefined || inputText.value === null || inputText.value
 
    function dragenter(dragenterevent) {
         const draggedOver = dragenterevent.target;
-        
+        //console.log(this)
         if (this.nextElementSibling === null) {
-            console.log(tasklist)
-            document.querySelector(`.div__task`).appendChild(dragging);
+            //console.log(tasklist)
+            document.querySelector(`.tasklist`).appendChild(dragging);
         } else {
-            document.querySelector(`.div__task`).insertBefore(dragging, this);
+            document.querySelector(`.tasklist`).insertBefore(dragging, this);
         }
     }
 
     function ondrop() {
-        // console.log('ondrop')
+        //console.log('ondrop')
         dragging = null;
     }
 
-    document.querySelector(`.div__task`).addEventListener(`dragover`, allowdrop)
-    document.querySelector(`.div__task`).addEventListener(`ondrop`, ondrop)
-   
 
 
-   document.querySelector(`.tasklist__div`).addEventListener(`dragstart`, dragstart)
-   document.querySelector(`.tasklist__div`).addEventListener(`dragenter`, dragenter)
-
-
-})
+    

@@ -91,7 +91,7 @@ main {
 .tasklist__div {
     background-color: #fff;
     width: 300px;
-    /* height: 50px; */
+    height: 50px;
     border: 1px solid lightgray;
     display: flex;
     justify-content: space-between;
@@ -114,8 +114,17 @@ main {
 
 .div__task {
     display: flex; 
-    justify-content: flex-end; 
+    /* justify-content: flex-end;  */
     cursor: pointer;
+    background-color: #fff;
+    width: 300px;
+    /* height: 50px; */
+    border: 1px solid lightgray;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    word-break: break-all;
+    padding: 10px;
 }
 
 
