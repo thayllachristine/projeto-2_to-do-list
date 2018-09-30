@@ -1,141 +1,151 @@
-// constantes dos elementos 
-const inputText = document.getElementById("inputText")
-const list = document.querySelector(".list")
+// Declaração de alguns elementos 
+const addItem = document.getElementById("addItem")
 const tasklist = document.querySelector(".tasklist")
+const tasklistShow = document.querySelector(".tasklist-show")
 
-//constante do botão "Adicionar tarefa"
-const addButton = document.querySelector(".btn__add")
+// Declaração da constante do botão "Add"
+const addItemButton = document.querySelector(".btn__add-item")
+// Evento de 'clique' para adição de novo item
+addItemButton.addEventListener("click", function (event) {
+    event.preventDefault()
 
-//evento de 'clique' 
-addButton.addEventListener("click", function(event){
-    event.preventDefault();
+    // Valição do input
+    if (addItem.value === undefined ||
+        addItem.value === null ||
+        addItem.value === `` ||
+        addItem.value === ` ` ||
+        !addItem.value.trim()) {
 
-//validação do input
+        alert("Escreva uma tarefa! :)")
+        addItem.focus()
 
-if (inputText.value === undefined || inputText.value === null || inputText.value === `` || inputText.value === ` ` | !inputText.value.trim()) {
-    console.log(inputText.value, "inputText.value")
-    alert ("Escreva uma tarefa :) ")
-    inputText.focus();
-    return false  
-} 
+        return false
+    }
 
-    const divtask = document.createElement("div")
-    divtask.className = "div__task"
-    
-    const newTask = document.createElement("div")
-    newTask.className = "tasklist__div"
-    
-    // newTask.innerHTML = `<div class="tasklist__div" draggable="true">
-    newTask.innerHTML =   `  
-    <p class="tasklist__p-none tasklist__p-all"> ${inputText.value} </p>
-    <button class="btn btn__delete"><strong>x</strong></button></div>`
 
-    divtask.appendChild(newTask)
-    tasklist.insertBefore(newTask, tasklist.childNodes[0]);
+    const showItem = document.createElement("div")
+    showItem.className = "tasklist-show__itens"
 
-    inputText.value = "";
-    
-    //constante do botão DELETAR
-    
-    const deleteButton = document.querySelector(".btn__delete")
-    
-    //evento de 'clique' 
-    deleteButton.addEventListener("click", function(event){
-        event.preventDefault();
-        newTask.remove();
+    const showItemDetail = document.createElement("div")
+    showItemDetail.className = "tasklist-show__details"
+    showItemDetail.innerHTML = `
+        <p class="tasklist-show__p 
+        tasklist-show__p_none 
+        tasklist-show__p_checked"> ${addItem.value} </p>
+        <button class="tasklist-show__btn__delete-item">x</button>
+    `
+    showItem.appendChild(showItemDetail)    
+    tasklistShow.insertBefore(showItemDetail, tasklistShow.childNodes[0])
+
+
+    addItem.value = ""
+
+
+    // Declaração da constante do botão "x" (deletar item)
+    const itemDeleteButton = document.querySelector(".tasklist-show__btn__delete-item")
+    // Evento de 'clique' para remoção de item
+    itemDeleteButton.addEventListener("click", function (event) {
+        event.preventDefault()
+        showItemDetail.remove()
     })
 
 
-    const paragTask = document.querySelector(`.tasklist__p-none`) 
-    paragTask.onclick = function click_p(event){
+    // Declaração da constante do <p>
+    const itemParag = document.querySelector(".tasklist-show__p_none")
+    // Evento de 'clique' para alteração de estilo
+    itemParag.onclick = function clickP(event) {
         event.preventDefault()
 
-        if (paragTask.classList.contains(`tasklist__p-none`)) {
-            paragTask.classList.remove(`tasklist__p-none`)
-            paragTask.classList.add(`tasklist__p-checked`)
+        if (itemParag.classList.contains("tasklist-show__p_none")) {
+            itemParag.classList.remove("tasklist-show__p_none")
+            itemParag.classList.add("tasklist-show__p_checked")
 
-            paragTask.style.fontStyle = `italic`
-            paragTask.style.textDecoration = `line-through`
-            paragTask.style.color = `lightgray`
-            
-        } else {
-            paragTask.classList.remove(`tasklist__p-checked`)
-            paragTask.classList.add(`tasklist__p-none`)
+            itemParag.style.fontStyle = "italic"
+            itemParag.style.textDecoration = "line-through"
+            itemParag.style.color = "lightgray"
 
-            paragTask.style.fontStyle = `normal`
-            paragTask.style.textDecoration = `none`
-            paragTask.style.color = `black`
+        } else if (itemParag.classList.contains("tasklist-show__p_checked")) {
+            itemParag.classList.remove("tasklist-show__p_checked")
+            itemParag.classList.add("tasklist-show__p_none")
+
+            itemParag.style.fontStyle = "normal"
+            itemParag.style.textDecoration = "none"
+            itemParag.style.color = "black"
         }
     }
 
- //botão selecionar todas as tarefas 
-    const selectButton = document.querySelector(".btn__selectall")
-    
-      selectButton.addEventListener("click", function(event){
-      event.preventDefault();
 
-      if (paragTask.classList.contains(`tasklist__p-none`)) {
-        paragTask.classList.remove(`tasklist__p-none`)
-        paragTask.classList.add(`tasklist__p-checked`)
+    // Declaração da constante do botão "Check All" 
+    const checkedAllButton = document.querySelector(".btn__check-all")
+    // Evento de 'clique' para selecionar todos os itens
+    checkedAllButton.addEventListener("click", function (event) {
+        event.preventDefault()
 
-        paragTask.style.fontStyle = `italic`
-        paragTask.style.textDecoration = `line-through`
-        paragTask.style.color = `lightgray`
-        
-    } else {
-        return false
-      }
-      const deleteAllButton = document.querySelector(".btn__deleteall")
-   
-        //evento de 'clique' para deletar todas as divs 
-        deleteAllButton.addEventListener("click", function(event){
-        event.preventDefault();
-        newTask.remove();
-          
-       })
-     
-   }) 
+        if (itemParag.classList.contains("tasklist-show__p_none")) {
+            itemParag.classList.remove("tasklist-show__p_none")
+            itemParag.classList.add("tasklist-show__p_checked")
 
-   
-   document.querySelector(`.tasklist__div`).setAttribute(`draggable`, true)
+            itemParag.style.fontStyle = "italic"
+            itemParag.style.textDecoration = "line-through"
+            itemParag.style.color = "lightgray"
 
-   document.querySelector(`.tasklist`).addEventListener(`allowdrop`, allowdrop)
-    document.querySelector(`.tasklist`).addEventListener(`ondrop`, ondrop)
+        } else {
+            return false
+        }
 
-    document.querySelector(`.tasklist__div`).addEventListener(`dragstart`, dragstart)
-    document.querySelector(`.tasklist__div`).addEventListener(`dragenter`, dragenter)
+        // Declaração da constante do botão "Delete All"
+        const deleteAllButton = document.querySelector(".btn__delete-all")
+        // Evento de 'clique' para deletar todas os itens/divs
+        deleteAllButton.addEventListener("click", function (event) {
+            event.preventDefault()
+            showItemDetail.remove()
+        })
+    })
+
+
+    // Inserção de atributos os elementos que terão os eventos de drag and drop
+    document.querySelector(".tasklist-show__details").setAttribute("draggable", true) // Este elemento será arrastado
+
+    document.querySelector(".tasklist-show").addEventListener("allowdrop", allowdrop) // Atributo que permite onde o drop será realizado
+    document.querySelector(".tasklist-show").addEventListener("ondrop", ondrop) // Atributo que indica o início do drop
+
+    document.querySelector(".tasklist-show__details").addEventListener("dragstart", dragstart) // Atributo que indica o início do arrastamento (drag)
+    document.querySelector(".tasklist-show__details").addEventListener("dragenter", dragenter) // Atributo que indica que este elemento está sendo arrastado
 })
 
 
+// Eventos : Drag and drop 
+let dragging // Esta variável irá "guardar o elemento que será arrastado"
 
+// function para iniciar o arrastamento (drag)
+function dragstart(dragstartevent) {
+    dragging = dragstartevent.target
+}
 
-   //start : drag 
-let dragging
+// function para verificar em que 'posição' o elemento arrastado será jogado
+function dragenter(dragenterevent) {
+    const draggedOver = dragenterevent.target
+    this.style.opacity = "1"
+    this.style.cursor = "move"
 
-   function dragstart (dragstartevent) {
-       dragging = dragstartevent.target
-   }
-
-   function allowdrop (allowdropevent) {
-       allowdropevent.preventDefault()
-   }
-
-   function dragenter(dragenterevent) {
-        const draggedOver = dragenterevent.target;
-        //console.log(this)
-        if (this.nextElementSibling === null) {
-            //console.log(tasklist)
-            document.querySelector(`.tasklist`).appendChild(dragging);
-        } else {
-            document.querySelector(`.tasklist`).insertBefore(dragging, this);
-        }
+    if (this.nextElementSibling === null) { // Se o elemento especificado for nulo 
+        document.querySelector(".tasklist-show").appendChild(dragging)
+    } else {
+        // console.log(this) : referência ao elemento que está sendo arrastado
+        document.querySelector(".tasklist-show").insertBefore(dragging, this)
     }
+}
 
-    function ondrop() {
-        //console.log('ondrop')
-        dragging = null;
-    }
+// function para permitir que o elemento receba o drop
+function allowdrop(allowdropevent) {
+    allowdropevent.preventDefault()
+}
 
 
+// Início/Fim do drop
+function ondrop() {
+    dragging = null
+}
 
-    
+
+//FIM <3  from Thaylla & Bruna - Turma 6 {reprograma}

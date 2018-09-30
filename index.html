@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,31 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    
+
     <title>Projeto 2 - To do list</title>
 </head>
 
 <body>
     <main>
-        <div class="container list">
-            <div class="list__title">
-                <span class="title__task">
-                    Adicione uma nova tarefa
-                    <!-- <h4></h4> -->
-                </span>
+        <div class="tasklist">
+            <div class="taskslit__title">
+                <span class="title-page">Adicione uma nova tarefa</span>
             </div>
 
-            <div class="list__input">
-                <input type="text" placeholder="O que vamos fazer hoje?" class="input__text" id="inputText">
-                <!-- size="40px" -->
+            <div class="tasklist__add">
+                <input type="text" placeholder="O que vamos fazer hoje?" class="add-item" id="addItem">
             </div>
 
-            <div class="list__btn">
-                <button class="btn btn__add">Add</button>
+            <div class="tasklist__principal-btn">
+                <button class="btn__add-item">Add</button>
             </div>
-            <div class="list__btn2">
-              <button class="btn-all btn__selectall">Select all</button>
-              <button class="btn-all btn__deleteall">Delete all</button>
-          </div>
-            <div class="tasklist"></div>
+
+            <div class="tasklist__others-btn">
+                <button class="group-others-btn btn__check-all">Check All</button>
+                <button class="group-others-btn btn__delete-all">Delete All</button>
+            </div>
+
+            <div class="tasklist-show"></div>
         </div>
     </main>
 

@@ -1,149 +1,155 @@
+/* Geral */
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
+
 body {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
     background-image: linear-gradient(to right, #e0c3fc, #8ec5fc);  
 }
 
+
 main {
     display: flex;
     justify-content: center;
     margin: 100px 0; 
-    /* //de acordo com o tamanho da tela */
 }
 
-/* p {
-    margin: 20px 10px;
-} */
 
-.container {
+/* Principais elementos da lista de tarefas */
+.tasklist {
     width: 300px;
-    /* height: 150px; */
-}
-
-.list {
-    background-color: #fff;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    background-color: #fff;
 }
 
 
-.list__title {
+.taskslit__title {
     padding: 10px;
     border-bottom: 1px solid lightgray;
 }
 
-.title__task {
+
+.title-page {
    font-weight: bolder;
 }
 
 
-
-.input__text {
+#addItem {
     width:  300px;
     height: 75px;
+
     padding: 50px;
     border-style: none;
-    /* word-break: break-all; */
+
     overflow-wrap: break-word;
 }
 
-/* BUTTONS */
 
-.btn__add {
-    background-color: #ba7af8;
-    color: #fff;
+#addItem::placeholder {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
 
+
+/* <div> : botões  */
+.tasklist__others-btn {
+    width: 300px;
+    border-top: 1px solid #fff; 
+
+    background-color: #fff;
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Botões */
+.btn__add-item {
     border: #ba7af8;
     padding: 7.5px 134.25px;
-
+    
+    background-color: #ba7af8;
+    color: #fff;
+    
     text-transform: uppercase;
     font-weight: bold;
     font-family: 'Open Sans';
     letter-spacing: 1px;    
 }
 
-.btn-all {
+
+.group-others-btn {
+    padding: 7.5px 27.75px;
+    border: #8ec5fc;
+    
     background-color: #e0c3fc;
     color: #fff;
-    border: #8ec5fc;
-    padding: 7.5px 27.75px;
+    
     text-transform: uppercase;
     font-weight: bold;
     font-family: 'Open Sans';
-    letter-spacing: 1.95px;
-
+    letter-spacing: 2.15px;
 }
 
 
-.tasklist {
-    background-color: #fff;
-    text-align: left;
+/* <div> tasklist__show */
+.tasklist-show {
     width: 300px;
-    /* height: 125px; */
+    
+    background-color: #fff;
 }
 
-.tasklist__div {
-    background-color: #fff;
+
+/* Elementos adicionados via JS */
+/* Mostrar itens */
+.tasklist-show__itens {
     width: 300px;
+
+    padding: 10px;
+    border: 1px solid #F0F0F0;
+    
+    background-color: #fff;
+
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+
+    word-break: break-all;
+    cursor: pointer;
+}
+
+
+/* Mostrar itens + detalhes (<p> + <button>) */
+.tasklist-show__details {
     height: 50px;
-    border: 1px solid lightgray;
+
+    padding: 0 10px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
-    word-break: break-all;
-    padding: 10px;
 }
 
 
-.btn__delete {
+.tasklist-show__btn__delete-item {
+    height: 20px;
+
     border: none;
     background-color: #fff;
-    height: 20px;
+    
+    font-weight: bolder;
     cursor: pointer;
-    /* position: relative;
-    left: 280px;
-    bottom: 40px; */
-}
-
-.div__task {
-    display: flex; 
-    /* justify-content: flex-end;  */
-    cursor: pointer;
-    background-color: #fff;
-    width: 300px;
-    /* height: 50px; */
-    border: 1px solid lightgray;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    word-break: break-all;
-    padding: 10px;
 }
 
 
-.list__btn2 {
-    background-color: #fff;
-    width: 300px;
-    display: flex;
-    justify-content: space-between;
-    /* border: 1px solid; */
-    border-top: 1px solid #fff; 
-}
-
-
-.tasklist__p-all {
+.tasklist-show__p {
     font-size: 13px;
-}
-
-.input__text::placeholder {
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    font-size: 12px;
-
 }
